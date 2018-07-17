@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сентемент Анализ текста</title>
+     {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+</head>
+<body>
+    <div class="jumbotron">
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</body>
+</html>

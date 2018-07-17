@@ -1,0 +1,15 @@
+{% extends "ai/wrapper.html" %}
+{% block content %}
+    <p class="h3">Анализ тональности отзывов на фильмы сайта портала IMDB:</p>
+    <hr>
+    <form action="" method="post">
+    {% csrf_token %}
+        <div class="form-group">
+            <label for="comment">Текст отзыва: (на английском)</label>
+            <textarea class="form-control" rows="10" cols="10" id="comment" name="q">{{ source }}</textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Оценить</button>
+        <label class="h5">Результат анализа:</label>
+        <label class="h3">{{ result }}</label>
+    </form>
+{% endblock %}
