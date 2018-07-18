@@ -1,0 +1,17 @@
+start jango: (/it/portfolio_ai/jango_web_site)
+python manage.py runserver 0.0.0.0:8000
+
+(forever start):forever start  -c python manage.py runserver 0.0.0.0:8000
+
+
+
+
+
+
+start api: (/it/portfolio_ai/api_service/api)
+python api.py
+
+(forever start): forever start  -c python api.py
+
+
+

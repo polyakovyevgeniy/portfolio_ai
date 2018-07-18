@@ -58,8 +58,8 @@ def imdb_sa(text=None):
 
 @flask_app.route('/api/imdb_sa_s/<text_data>', methods=['POST', 'GET'])
 def imdb_sa_s(text_data=None):
-    d = json.loads(request.data)
-    txt = d['Text']
+    d = request.json
+    txt = str(d)
     text = clean_data(txt)
     seq =  tokenizer.texts_to_sequences([text])
     prepared_vector = pad_sequences(seq, 100)
@@ -92,15 +92,16 @@ def clean_data(text:str) -> str:
 def load():
     # Загрузка модели и весов
     global loaded_model
-    json_file = open('../ds/model_best_neuro.json', 'r')
+    ''
+    json_file = open('model_best_neuro.json', 'r')
     loaded_model_json = json_file.read()
     json_file.close()
     loaded_model = model_from_json(loaded_model_json)
-    loaded_model.load_weights("../ds/model_best_neuro.h5")
+    loaded_model.load_weights("model_best_neuro.h5")
 
     # Загрузка токенайзера
     global tokenizer
-    with open('../ds/tokenizer.pickle', 'rb') as f:
+    with open('tokenizer.pickle', 'rb') as f:
         tokenizer = pickle.load(f)
 
     # Загрузка стоп-слов

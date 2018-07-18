@@ -8,8 +8,7 @@ def index(request):
         return render(request, 'ai/sa.html',
                    {'source': '', 'result': '?'})
     if request.method == "POST":
-        data = ({"Text": request.POST['q']})
-        r = requests.post("http://127.0.0.1:5000/api/imdb_sa_s/hello", json=data)
+        r = requests.post("http://127.0.0.1:5000/api/imdb_sa_s/hello", json=request.POST['q'])
         result = r.text
         res = result.split(';')
         pred = res[0]
